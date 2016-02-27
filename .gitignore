@@ -1,0 +1,14 @@
+build/
+dist/
+
+# py.test state cache
+.cache/
+
+.eggs/
+*.egg
+*.egg-info
+
+*.pyc
+*.pyo
+
+*.log
