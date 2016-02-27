@@ -43,3 +43,34 @@ def domain(config):
 def list(config):
     result = config.api.domain.list(config.api_key)
     click.echo(result)
+
+
+@cli.group()
+@click.option('--domain', required=True, help='Domain to be edited')
+@pass_config
+def forward(config, domain):
+    """Manage mail forwarding configuration"""
+    config.target_domain = domain
+
+
+@forward.command()
+@pass_config
+def count(config):
+    """Add forwarding address to specified domain"""
+    result = config.api.domain.forward.count(config.api_key,
+                                             config.target_domain)
+    click.echo(result)
+
+
+@forward.command()
+@click.argument('source')
+@click.argument('destination')
+@pass_config
+def create(config, source, destination):
+    """Add forwarding address to specified domain"""
+    parameters = {'destinations': [destination]}
+    result = config.api.domain.forward.create(config.api_key,
+                                              config.target_domain,
+                                              source,
+                                              parameters)
+    click.echo(result)
