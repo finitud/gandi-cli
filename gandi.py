@@ -1,10 +1,11 @@
 import click
+import xmlrpclib
 
 
 class Config:
-    def __init__(self):
-        self.api_key = ''
-        self.api_url = ''
+
+    def __init__(self, key):
+        self.api_key = key
 
 
 pass_config = click.make_pass_decorator(Config)
@@ -15,17 +16,30 @@ pass_config = click.make_pass_decorator(Config)
               help='User API key (overrides GANDI_API_KEY variable)')
 @click.option('--url', envvar='GANDI_API_URL',
               help='Remote API endpoint (overrides GANDI_API_URL variable)')
-@pass_config
-def cli(config, key, url):
+@click.pass_context
+def cli(context, key, url):
     """
     A command-line interface to manage Gandi domain configuration
     """
-    config.api_key = key
-    config.api_url = url
+    context.obj = Config(key)
+    context.obj.api = xmlrpclib.ServerProxy(url)
+
+
+@cli.command()
+@pass_config
+def version(config):
+    """Display API version info"""
+    click.echo(config.api.version.info(config.api_key))
 
 
 @cli.group()
-@click.option('--domain', help='Target domain')
 @pass_config
-def mail(config):
+def domain(config):
     pass
+
+
+@domain.command()
+@pass_config
+def list(config):
+    result = config.api.domain.list(config.api_key)
+    click.echo(result)
