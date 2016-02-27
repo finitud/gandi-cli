@@ -35,6 +35,7 @@ def version(config):
 @cli.group()
 @pass_config
 def domain(config):
+    """Domain API interface"""
     pass
 
 
@@ -49,7 +50,7 @@ def list(config):
 @click.option('--domain', required=True, help='Domain to be edited')
 @pass_config
 def forward(config, domain):
-    """Manage mail forwarding configuration"""
+    """Mail forwarding API interface"""
     config.target_domain = domain
 
 
