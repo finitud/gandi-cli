@@ -1,4 +1,5 @@
 import click
+import click_config
 import xmlrpclib
 
 
@@ -12,6 +13,7 @@ pass_config = click.make_pass_decorator(Config)
 
 
 @click.group()
+@click_config.wrap(module=Config)
 @click.option('--key', envvar='GANDI_API_KEY',
               help='User API key (overrides GANDI_API_KEY variable)')
 @click.option('--url', envvar='GANDI_API_URL',

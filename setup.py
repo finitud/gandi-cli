@@ -13,6 +13,7 @@ setup(
 
     install_requires=[
         'Click',
+        'click-config'
     ],
     entry_points='''
         [console_scripts]
