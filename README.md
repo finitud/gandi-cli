@@ -16,4 +16,4 @@ At time of writing:
 * The production server is `https://rpc.gandi.net/xmlrpc/`
 
 For more info please refer to the
-[http://doc.rpc.gandi.net/overview.html#introduction|API Overview]
+[API Overview](http://doc.rpc.gandi.net/overview.html#introduction).
