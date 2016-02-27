@@ -17,3 +17,7 @@ At time of writing:
 
 For more info please refer to the
 [API Overview](http://doc.rpc.gandi.net/overview.html#introduction).
+
+### Links
+
+* http://doc.rpc.gandi.net/domain/usage.html
