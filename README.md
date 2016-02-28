@@ -1,5 +1,13 @@
 A CLI tool to manage your gandi.net domains
 
+## Usage
+
+* To install, `git clone && cd gandi-cli` followed by `pip install .`
+
+* Run `gandi` to get an overview of available options and commands.
+  A user API key and the hostname to use are required options, they
+  can be passed via command line options or in environment variables.
+
 ## Configuration
 
 Some options can be configured via environment variables:
