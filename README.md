@@ -2,7 +2,10 @@ A CLI tool to manage your gandi.net domains
 
 ## Usage
 
-* To install, `git clone && cd gandi-cli` followed by `pip install .`
+* This tool is written in Python and requires `setuptools`.
+
+* To install, clone the repo and then run `pip install .` inside
+  the project's directory.
 
 * Run `gandi` to get an overview of available options and commands.
   A user API key and the hostname to use are required options, they
