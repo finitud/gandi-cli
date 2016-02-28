@@ -64,6 +64,15 @@ def count(config):
 
 
 @forward.command()
+@pass_config
+def list(config):
+    """Add forwarding address to specified domain"""
+    result = config.api.domain.forward.list(config.api_key,
+                                            config.target_domain)
+    click.echo(result)
+
+
+@forward.command()
 @click.argument('source')
 @click.argument('destination')
 @pass_config
@@ -74,4 +83,15 @@ def create(config, source, destination):
                                               config.target_domain,
                                               source,
                                               parameters)
+    click.echo(result)
+
+
+@forward.command()
+@click.argument('source')
+@pass_config
+def delete(config, source):
+    """Add forwarding address to specified domain"""
+    result = config.api.domain.forward.delete(config.api_key,
+                                              config.target_domain,
+                                              source)
     click.echo(result)
